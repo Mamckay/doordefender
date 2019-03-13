@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Knock Knock</title>
+    <style>
+       .title{
+            text-align:center;
+            font-size: 3vw;
+        }
+
+        .live-feed{
+            width: 300px;
+            margin: 20px;
+        }
+
+        .last-detected{
+            width: 300px;
+            margin: 20px;
+        }
+
+        html{
+            background-color: #333;
+        }
+        </style>
+</head>
+<body>
+    <h1 class='title'>Knock Knock</h1>
+    <img class='live-feed' id="image">
+    <img class='last-detected' id="image2">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script>
+        const socket = io.connect('http://192.168.0.6:3000');
+        socket.on('image', (image) => {
+            const imageElm = document.getElementById('image');
+            imageElm.src = `data:image/png;base64,${image}`;
+        });
+        socket.on('bucket', (data) => {
+            const imageElem = document.getElementById('image2');
+            imageElem.src = `data:image/png;base64,${data}`;
+        });
+    </script>
+</body>
+</html>

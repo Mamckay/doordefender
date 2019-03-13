@@ -1,0 +1,32 @@
+{
+  "name": "nodecctv",
+  "version": "1.0.0",
+  "description": "Open source home defense",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http-server": "^0.11.1",
+    "node-pre-gyp": "^0.12.0",
+    "opencv": "github:peterbraden/node-opencv",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mamckay/doordefender.git"
+  },
+  "keywords": [
+    "Defense",
+    "Door",
+    "Camera"
+  ],
+  "author": "Michael Mckay",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mamckay/doordefender/issues"
+  },
+  "homepage": "https://github.com/Mamckay/doordefender#readme"
+}
