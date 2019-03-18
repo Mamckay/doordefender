@@ -48,7 +48,7 @@ try {
         let buff = fs.readFileSync('last-detected.png');
         let base64slow = buff.toString('base64');
         io.emit('bucket', base64slow);
-    }, 10000);
+    }, 1000);
 
 } catch (e) {
     console.log("Couldn't start camera:", e)

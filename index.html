@@ -4,43 +4,144 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Knock Knock</title>
+    <title>Watchdog</title>
+    <link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script type="text/javascript" src="scripts/main.js"></script>
     <style>
+        a{
+            text-decoration: none;
+        }
+        .footer{
+            display: flex;
+            width: 100%;
+            background-color: white;
+            justify-content: space-evenly;
+            border-top: 3px black solid;
+        }
+
+        .insert{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0 10% 0 10%;
+        }
+        button{ 
+            font-size: 1vw;
+            font-family: 'Raleway', sans-serif;
+            background-color: transparent;
+            border: solid 2px black;
+            padding:10px;
+            width: 200px;
+            color:black;
+            margin: 1% 1% 1% 1%;
+        }
+        button:hover{
+            cursor:pointer;
+        } 
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .flex-center{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            background-color:white;
+        }
        .title{
+            font-family: 'Amaranth', sans-serif;
+            padding: 10px;
+            margin:0;
             text-align:center;
-            font-size: 3vw;
+            font-size: 4vw;
         }
-
+        .icon{
+            width: 30vw;
+        }
         .live-feed{
-            width: 300px;
-            margin: 20px;
+            width: 30vw;
+            margin: 2vw;
+            border: 2vw white solid;
         }
-
         .last-detected{
-            width: 300px;
-            margin: 20px;
+            width: 30vw;
+            margin: 2vw;
+            border: 2vw white solid;
+        }
+        .landing-page{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('./assets/sunsetdog.jpg');            
+            background-size: cover;
+            height: 100vh;
+        }
+        .landing-button{
+
+        }
+        .landing-page h3{
+            position: relative;
+            top: -80px; 
+        }
+        html{
+            scroll-behavior: smooth;
+            font-family: 'Raleway', sans-serif;
+            color:black;
+            font-size:1.5vw;
+        }
+        .navbar{
+            padding:0;
+            margin:0;
+            margin-bottom: 5vh;            
         }
 
-        html{
-            background-color: #333;
+        p{
+            margin: 0 15% 0 15%;
         }
         </style>
 </head>
 <body>
-    <h1 class='title'>Knock Knock</h1>
-    <img class='live-feed' id="image">
-    <img class='last-detected' id="image2">
+    <main>
+        <section class='landing-page'>
+            <header class='navbar'>
+                <h1 class= title> Watchdog </h1>
+            </header>
+            <h3>The Node.js enthusiasts home defense.</h3>
+            <button class='landing-button'>Get Started</button>
+        </section>
+        
+        <section class='insert flex-center'>
+           <button class='how-to'>New to Watchdog</button>    
+           <button class='main-button'>Experienced User</button>           
+        </section>
+        <section class='footer'>
+            <a target="_blank" href='http://michaelmckay.org'><button>Github</button></a>
+            <a target="_blank" href='http://michaelmckay.org'><button>Contact</button></a>
+        </section>
+    </main>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-    <script>
+    <script >
         const socket = io.connect('http://192.168.0.6:3000');
         socket.on('image', (image) => {
-            const imageElm = document.getElementById('image');
+            let imageElm = document.getElementById('image');
+            if(imageElm !=  null){
             imageElm.src = `data:image/png;base64,${image}`;
+            }
         });
         socket.on('bucket', (data) => {
-            const imageElem = document.getElementById('image2');
+            let imageElem = document.getElementById('image2');
+            if(imageElem !=  null){
             imageElem.src = `data:image/png;base64,${data}`;
+            }
         });
     </script>
+     <script >
+         setup()
+     </script>
 </body>
 </html>
