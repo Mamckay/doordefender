@@ -1,3 +1,9 @@
+const landingBody = `
+                    <img class='watchdog-img' src='./assets/watchdog.png' alt='watch dog'>
+                    <button class='how-to'>New to Watchdog</button>    
+                    <button class='main-button'>Experienced User</button>     
+                    `
+
 const liveBody = `
                 <section class='live'>
                     <h2 class='title'> Live Feed </h2>
@@ -13,37 +19,28 @@ const detectedBody = `
                     <button class='back-button'> Back </button>`
 
 const mainBody = `
+                <img class='watchdog-img' src='./assets/watchdog.png' alt='watch dog'>
                 <button class='live-button'> View Live Feed </button>
-                <button class='detect-button'> View Last Possible Visitor </button>`;
+                <button class='detect-button'> View Last Possible Visitor </button>
+                <button class='menu-button'> Main Menu </button>`;
 
-const helpBody = ` <h3>Getting started!</h3>
+const helpBody = ` <h2>Welcome to Watchdog</h2>
                     <section>
-                        <p>Welcome to Watchdog. 
+                        <p> 
                             Ever wanted to work with node to protect your family?
                             Watchdog is made to detect and store security potential threats as images.
                             Time stamp trouble and keep an eye out with Watchdog! 
-                            To start viewing a live stream with active detection press View Live Feed.
-                            To start viewing a stream that will feed you the lastest person detected press Last Possible Visitor.
-                        
-                    </p>
+                        </p>
+                        <ul>
+                            <li>1. Watch the video on setting up Watchdog on your machine</li>
+                            <li>2. Audio is not available yet but is planned for a future update.</li>
+                            <li>3. Networked cameras using ffmpeg as a feature is being worked on now. Look out for an update soon!</li>
+                        </ul>
                     </section>
-                    <button class='live-button'> View Live Feed </button>
-                    <button class='detect-button'> View Last Possible Visitor </button> `
+                    <button class='main-button'> Get Started! </button>`
 
 function setup() {
     $(document).ready(function () {
-        console.log('getting setup');
-        $('.live-button').on('click', event => {
-            $('.insert').html(`${liveBody}`);
-            backbutton();
-            event.preventDefault();
-        });
-
-        $('.detect-button').on('click', event => {
-            $('.insert').html(`${detectedBody}`);
-            backbutton();
-            event.preventDefault();
-        });
 
         $('.how-to').on('click', event => {
             $('.insert').html(`${helpBody}`);
@@ -60,7 +57,7 @@ function setup() {
         });
 
         $('.landing-button').on('click', event => {
-            window.scrollTo(0, window.screen.height);
+            window.scrollTo(0, window.screen.height + 100);
             event.preventDefault();
         });
 
@@ -71,20 +68,15 @@ function setup() {
 function backbutton() {
     $('.back-button').on('click', event => {
         $('.insert').html(`${mainBody}`);
-        setup()
+        experienced()
         event.preventDefault();
     });
 }
 
 function newuser() {
-    $('.live-button').on('click', event => {
-        $('.insert').html(`${liveBody}`);
-        backbutton();
-        event.preventDefault();
-    });
-
-    $('.detect-button').on('click', event => {
-        $('.insert').html(`${detectedBody}`);
+    $('.main-button').on('click', event => {
+        $('.insert').html(`${mainBody}`);
+        experienced();
         backbutton();
         event.preventDefault();
     });
@@ -99,6 +91,13 @@ function experienced() {
 
     $('.detect-button').on('click', event => {
         $('.insert').html(`${detectedBody}`);
+        backbutton();
+        event.preventDefault();
+    });
+
+    $('.menu-button').on('click', event => {
+        $('.insert').html(`${landingBody}`);
+        setup();
         event.preventDefault();
     });
 }
