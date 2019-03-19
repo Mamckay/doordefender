@@ -1,10 +1,10 @@
 # Watchdog
 
 ## Purpose
-    Record, detect, defend. Watchdog uses opencv to detect possible threats and save an image with a timestamp so that you always know who was knocking. 
+Record, detect, defend. Watchdog uses opencv to detect possible threats and save an image with a timestamp so that you always know who was knocking. 
 
-    Live mode- Regular camera with detection running.
-    Detection mode- displays the last few possible threats.
+Live mode- Regular camera with detection running.
+Detection mode- displays the last few possible threats.
 
 ## Screen Shots
 
