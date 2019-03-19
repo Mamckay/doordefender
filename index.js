@@ -24,10 +24,10 @@ try {
                 for (var i = 0; i < faces.length; i++) {
                     var face = faces[i];
                     im.ellipse(face.x + face.width / 2, face.y + face.height / 2, face.width / 2, face.height / 2);
-                    im.save('./last-detected.png');
+                    im.save('./storage/last-detected.png');
                 }
 
-                im.save('./face-detection.png');
+                im.save('./storage/face-detection.png');
                 console.log('Image saved to ./face-detection.png');
             });
 
@@ -37,7 +37,7 @@ try {
             }
             */
 
-            let buff = fs.readFileSync('face-detection.png');
+            let buff = fs.readFileSync('./storage/face-detection.png');
             let base64data = buff.toString('base64');
             io.emit('image', base64data);
             // window.blockingWaitKey(0, 50);
@@ -45,7 +45,7 @@ try {
     }, 100);
 
     setInterval(function () {
-        let buff = fs.readFileSync('last-detected.png');
+        let buff = fs.readFileSync('./storage/last-detected.png');
         let base64slow = buff.toString('base64');
         io.emit('bucket', base64slow);
     }, 1000);
